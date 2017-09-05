@@ -1,0 +1,21 @@
+.errorAlert{
+color: #E74C3C;
+font-size: 14px;
+font-weight: bold;	
+}
+
+.td12{
+font-size: 12px;
+}
+
+.parsley-required{
+	color: #E74C3C !important;
+}
+
+.parsley-pattern{
+	color: #E74C3C !important;
+}
+
+.parsley-min{
+	color: #E74C3C !important;
+}

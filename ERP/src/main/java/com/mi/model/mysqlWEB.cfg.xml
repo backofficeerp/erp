@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="ERP">
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">root123456</property>
+        <property name="hibernate.connection.url">jdbc:mysql://aa1pasjm9smrcvp.c59bwkwbhnoj.us-east-1.rds.amazonaws.com:3306/ERP</property>
+        <property name="hibernate.connection.username">crustsme001</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- <mapping resource="com/mi/model/User.hbm.xml"/>
+        <mapping resource="com/mi/model/Role.hbm.xml"/>
+        <mapping resource="com/mi/model/Branch.hbm.xml"/>
+        <mapping resource="com/mi/model/Company.hbm.xml"/>
+        <mapping resource="com/mi/model/Organisation.hbm.xml"/>
+        <mapping resource="com/mi/model/LoginManager.hbm.xml"/>
+        <mapping resource="com/mi/model/Modules.hbm.xml"/>
+        <mapping resource="com/mi/model/RoleModuleRelation.hbm.xml"/>
+        <mapping resource="com/mi/model/UserRoleRelation.hbm.xml"/> -->
+        <mapping class="com.mi.model.CompanyAdminMaster" />
+        <mapping class="com.mi.model.CompanyTypeMaster" />
+        <mapping class="com.mi.model.SuperAdminMaster" />
+        <mapping class="com.mi.model.CompanyMaster" />
+        <mapping class="com.mi.model.UserTypeMaster" />
+        <mapping class="com.mi.model.CompanySizeMaster" />
+        <mapping class="com.mi.model.CountryMaster" />
+        <mapping class="com.mi.model.LoginManager" />
+		
+    </session-factory>
+</hibernate-configuration>

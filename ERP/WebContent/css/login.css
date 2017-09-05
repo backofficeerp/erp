@@ -1,0 +1,77 @@
+#loginLogo{
+	margin-top: -6px;
+}
+
+/************************************/
+.premove{padding-left:0;padding-right:0;}
+.pmin{padding-left:6px;padding-right:6px;}
+.mbottom15{margin-bottom:15px;}
+.bgImg{
+  background: url('../img/bg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.whiteBox{
+  margin: 9.7em 0;
+  background-color: #eee;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 1px 2px 60px #333;
+}
+.innerpads{
+  padding: 5px 30px;
+}
+.subtitle{color:#61809a;line-height: 1.1;}
+
+.custombox{
+  height:40px;
+  font-size: 12px;
+  border-radius: 6px;
+  background-color: #fff;
+}
+.typeSelect{
+  font-size: 12px;
+  height:35px;
+  width:100%;
+  border-radius: 5px;
+  padding-left: 8px;
+}
+.footer{
+  background-color: #D2DDDE;
+  padding: 20px 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border
+}
+.btn-custom{
+  font-size: 14px;
+  font-weight: bold;
+}
+.icon{
+  height: 40px;
+  width:45px;
+  position: absolute;
+  left:-74px;
+  top:0;
+}
+
+@media (max-width: 299px){
+  .icon{display: none;}
+}
+@media (min-width: 300px){
+  .icon{display: none;}
+}
+@media (min-width: 449px){
+  .icon{display: none;}
+}
+@media (min-width: 768px){  
+  .icon{display: block;}
+}
+@media (min-width: 992px){
+  .icon{display: block;}
+}
+
+#errorLabel{
+display: none;	
+}
