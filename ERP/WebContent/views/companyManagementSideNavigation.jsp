@@ -9,7 +9,8 @@
 
 <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
 		
-		
+		<li ${uri == 'companyManagementDashboard' ? 'class="active"' : '' } ><a href="companyManagementDashboard"><i class="icon-chevron-right"></i>
+				Dashboard</a></li>
 		<li ${uri == 'manageBranches' ? 'class="active"' : '' } ><a href="manageBranches"><i class="icon-chevron-right"></i>
 				Manage Branches</a></li>		
 		

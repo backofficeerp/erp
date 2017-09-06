@@ -8,7 +8,7 @@
 .mbottom15{margin-bottom:15px;}
 .bgImg{
   background: url('../img/bg.png');
-  background-size: 100% 100%;
+  /* background-size: 100% 100%; */
   background-repeat: no-repeat;
 }
 .whiteBox{

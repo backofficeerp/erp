@@ -10,12 +10,24 @@ font-size: 12px;
 
 .parsley-required{
 	color: #E74C3C !important;
+	font-size: 12px;
 }
 
 .parsley-pattern{
 	color: #E74C3C !important;
-}
+	font-size: 12px;
+}	
 
 .parsley-min{
 	color: #E74C3C !important;
+	font-size: 12px;
+}
+
+.parsley-type{
+	color: #E74C3C !important;
+	font-size: 12px;
+}
+
+.mandatoryStar{
+	color: red;
 }

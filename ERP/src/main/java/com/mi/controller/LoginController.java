@@ -41,7 +41,7 @@ public class LoginController {
 
 			// if not null then redirecting the loggedUser based on his/her
 			// usertype
-			switch (Utility.getLoggedUserType(request)) {
+			switch (Utility.getLoggedUserTypeUuid(request)) {
 			case "7b824b91-92c6-11e7-a05d-b8975ad405b5":
 				return "crustAdministration";
 

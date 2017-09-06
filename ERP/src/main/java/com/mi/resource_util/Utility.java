@@ -101,21 +101,21 @@ public class Utility {
 
 	}
 
-	// to get the loggedUser username from session object
+	// to get the loggedUser email from session object
 	public static String getLoggedUser(HttpServletRequest request) {
 
 		return (String) request.getSession().getAttribute("loggedUser");
 
 	}
 
-	// to get the loggedUser usertype from session object
-	public static String getLoggedUserType(HttpServletRequest request) {
+	// to get the loggedUser usertypeUuid from session object
+	public static String getLoggedUserTypeUuid(HttpServletRequest request) {
 
-		return (String) request.getSession().getAttribute("loggedUserType");
+		return (String) request.getSession().getAttribute("loggedUserTypeUuid");
 
 	}
 
-	// to get loggedUser login Manager Id
+	// to get loggedUser login Manager UuidId
 	public static String getLoggedLoginManagerUuid(HttpServletRequest request) {
 
 		return (String) request.getSession().getAttribute(
@@ -123,6 +123,7 @@ public class Utility {
 
 	}
 
+	//to get the UTC time in millisecond
 	public static long getUTCInMillisecond() {
 		
 		Calendar calendar = new GregorianCalendar();

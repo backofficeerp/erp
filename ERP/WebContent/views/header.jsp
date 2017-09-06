@@ -141,7 +141,7 @@
 					</ul>
 					<ul class="nav">
 						<li><a href="crustAdministration">Dashboard</a></li>
-						<li class="dropdown">
+						<!-- <li class="dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Manage Companies <b class="caret"></b>
 
                                 </a>
@@ -153,7 +153,7 @@
                                         <a href="createCompany">Create New Company</a>
                                     </li>
                                     
-                                   <!--  <li>
+                                    <li>
                                         <a href="#">Other Link</a>
                                     </li>
                                     <li class="divider"></li>
@@ -162,9 +162,9 @@
                                     </li>
                                     <li>
                                         <a href="#">Other Link</a>
-                                    </li> -->
+                                    </li>
                                 </ul>
-                            </li>
+                            </li> -->
 						
 					</ul>
 				</div>

@@ -1,9 +1,16 @@
+<%@page import="java.util.TimeZone"%>
+<%@page import="java.util.GregorianCalendar"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@page import="org.hibernate.Session"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
+
 <head>
 <title>Manage Companies</title>
-
+<link href="css/common.css" rel="stylesheet" media="screen">
 <!-- <script src="resources/vendors/datatables/js/jquery.dataTables.min.js"></script>
         <link href="resources/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
         
@@ -69,10 +76,13 @@
 				<div class="block">
 					<div class="navbar navbar-inner block-header">
 						<div class="muted pull-left">Manage Companies</div>
-						<div class="pull-right"><a href="createCompany"><span class="badge badge-warning">Create a New Company&nbsp; &nbsp;<span
-										class="icon-plus icon-white"></span></span></a>
+						<div class="pull-right">
+							<a href="createCompany" data-toggle="tooltip"
+								data-placement="top" title="Create a New Company"><span
+								class="badge badge-warning"><span
+									class="icon-plus icon-white"></span></span></a>
 
-                                </div>
+						</div>
 						<!-- <div class="btn-group pull-right" style="margin-bottom: 10px;">
                                         <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-cog" ></i>&nbsp;<span class="caret"></span></button>
                                          <ul class="dropdown-menu">
@@ -104,27 +114,39 @@
 										<th>S/No.</th>
 										<th>Added Date</th>
 										<th>Company Name</th>
-										
 										<th>Company Type</th>
-										<th>Mobile No.</th>
 										<th>Country</th>
 										<th>Status</th>
 										<th>Actions</th>
 									</tr>
 								</thead>
+								<%
+									Calendar calendar = new GregorianCalendar();
+									TimeZone timeZoneIndia = TimeZone.getTimeZone("Asia/Calcutta");
+									calendar.setTimeZone(timeZoneIndia);
+								%>
 								<tbody class="td12">
-									<tr>
-										<td>1</td>
-										<td>08-01-2017</td>
-										<td>M.I. Soft Pvt. ltd.</td>
-										
-										<td>I.T</td>
-										<td>8565867717</td>
-										<td>US</td>
-										<td>active</td>
-										<td align="center"><a href=""><i class="icon-edit"></i></a>
-										</td>
-									</tr>
+									<c:forEach items="${CompanyMasterList}" var="list">
+										<tr>
+											<td>${CompanyMasterList.indexOf(list)+1}</td>
+											<td><c:set var="addDate" scope="request"
+													value="${list.addDate}" /> <%
+ 	calendar.setTimeInMillis((Long) request.getAttribute("addDate"));
+ %> <%=calendar.get(Calendar.DAY_OF_MONTH) + "/"
+						+ (calendar.get(Calendar.MONTH) + 1) + "/"
+						+ calendar.get(Calendar.YEAR)%></td>
+											<td>${list.companyName}</td>
+											<td>${list.getCompanyTypeMaster().getCompanyType()}</td>
+											<td>${list.getCountryMaster().getName()}</td>
+											<td>${list.status == '1' ? 'active' : ''}${list.status == '2' ? 'inactive' : ''}
+												${list.status == '3' ? 'deleted' : ''}</td>
+											<td style="text-align: center !important;"><span
+												 data-toggle="tooltip"
+												data-placement="top" title="Modify this record"><i
+													onclick="modifyCompany('${list.uuid}')" style="cursor: pointer;" class="icon-edit"></i></span></td>
+										</tr>
+									</c:forEach>
+
 								</tbody>
 
 							</table>
@@ -150,10 +172,40 @@
 
 </body>
 
-<style>
-.td12{
-font-size: 12px;
-}
-</style>
+<script>
+	$(document).ready(function() {
+		$('[data-toggle="tooltip"]').tooltip();
+		
+		
+		
+		
+		
+		
+	});
+	
+	function test(){
+		alert("test");
+	}
+	
+	function modifyCompany(companyUuid){
+		console.log("here");
+		var url = 'modifyCompany';
+		var form = $('<form action="' + url + '" method="post"></form>');
+		$('body').append(form);
+		$('<input />').attr('type', 'hidden').attr(
+				'name', "companyUuid").attr(
+				'value', companyUuid)
+				.appendTo(form);
+			form.submit();
+	}
+	
+</script>
+
+
+<%
+	Session hibSession = (Session) request
+			.getAttribute("companyMasterListSession");
+	hibSession.close();
+%>
 
 </html>

@@ -67,7 +67,7 @@
 <body>
 	<!-- header -->
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="companyManagementHeader.jsp"></jsp:include>
 
 	<!-- /header -->
 
@@ -80,7 +80,7 @@
 
 				<!-- side Navigation -->
 
-				<jsp:include page="sideNavigation.jsp"></jsp:include>
+				<jsp:include page="companyManagementSideNavigation.jsp"></jsp:include>
 
 				<!-- /side navigation -->
 			</div>
@@ -175,7 +175,7 @@
 
 		<!-- /row fluid -->
 		<!-- footer  -->
-		<jsp:include page="footer.jsp"></jsp:include>
+		<jsp:include page="companyManagementFooter.jsp"></jsp:include>
 		<!-- /footer  -->
 
 	</div>

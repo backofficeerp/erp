@@ -56,48 +56,48 @@
 						</div>
 						<div class="block-content collapse in">
 							<div class="span12">
-								<form id="createCompanyForm" class="form-horizontal" data-parsley-validate data-parsley-ui-enabled="true">
+								<form id="createCompanyForm" action="createCompanyProcess" method="post" class="form-horizontal" data-parsley-validate data-parsley-ui-enabled="true">
 
 									<div class="control-group">
-										<label class="control-label " for="focusedInput">First
+										<label class="control-label " for="focusedInput"><span class="mandatoryStar">*&nbsp;</span>First
 											Name: </label>
 										<div class="controls">
-											<input class="input-xlarge focused" id="focusedInput"
-												type="text" name="firstname" required>
+											<input class="span11 m-wrap" id="focusedInput"
+												type="text" name="firstName" required>
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label " for="focusedInput">Middle
+										<label class="control-label " for="focusedInput"><span class="mandatoryStar">&nbsp;&nbsp;</span>Middle
 											Name: </label>
 										<div class="controls">
-											<input class="input-xlarge focused" id="focusedInput"
-												type="text" >
+											<input class="span11 m-wrap" id="focusedInput"
+												type="text" name="middleName">
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label " for="focusedInput">Last
+										<label class="control-label " for="focusedInput"><span class="mandatoryStar">&nbsp;&nbsp;</span>Last
 											Name: </label>
 										<div class="controls">
-											<input class="input-xlarge focused" id="focusedInput"
-												type="text" >
+											<input class="span11 m-wrap" id="focusedInput"
+												type="text" name="lastName">
 										</div>
 									</div>
 
 									<div class="control-group">
-										<label class="control-label" for="focusedInput">Company
+										<label class="control-label" for="focusedInput"><span class="mandatoryStar">*&nbsp;</span>Company
 											Name: </label>
 										<div class="controls">
-											<input class="input-xlarge focused" id="focusedInput"
+											<input class="span11 m-wrap" id="focusedInput"
 												type="text" name="companyName" required>
 										</div>
 									</div>
 
 									<div class="control-group">
-										<label class="control-label " for="selectError">Company
+										<label class="control-label " for="selectError"><span class="mandatoryStar">*&nbsp;</span>Company
 											Type: </label>
 										<div class="controls">
-											<select class="input-xlarge focused" id="selectError" name="companyType" data-parsley-min="1">
-												<option>Select</option>
+											<select class="span11 m-wrap" id="selectError" data-parsley-pattern="^(?!0).*$" name="companyType" data-parsley-pattern-message="This value is required.">
+												<option value="0">Select</option>
 												<c:forEach items="${companyTypeList}" var="list">
 													<option value="${list.uuid}">${list.companyType}</option>
 												</c:forEach>
@@ -107,37 +107,37 @@
 									</div>
 
 									<div class="control-group">
-										<label class="control-label " for="focusedInput">Mobile
+										<label class="control-label " for="focusedInput"><span class="mandatoryStar">*&nbsp;</span>Mobile
 											No: </label>
 										<div class="controls">
-											<input class="input-xlarge focused" id="focusedInput"
+											<input class="span11 m-wrap" id="focusedInput"
 												type="text" name="mobileNo" data-parsley-pattern="^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$" required>
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label " for="focusedInput">E-mail
+										<label class="control-label " for="focusedInput"><span class="mandatoryStar">*&nbsp;</span>E-mail
 											Address: </label>
 										<div class="controls">
-											<input class="input-xlarge focused" id="focusedInput"
+											<input class="span11 m-wrap" id="focusedInput"
 												type="email" name="email" required>
 										</div>
 									</div>
 
 									<div class="control-group">
-										<label class="control-label " for="focusedInput">Password:
+										<label class="control-label " for="focusedInput"><span class="mandatoryStar">*&nbsp;</span>Password:
 										</label>
 										<div class="controls">
-											<input class="input-xlarge focused" id="focusedInput"
-												type="password" name="upass" required>
+											<input class="span11 m-wrap" id="focusedInput"
+												type="password" name="password" required>
 										</div>
 									</div>
 
 
 									<div class="control-group">
-										<label class="control-label " for="selectError">Country:
+										<label class="control-label " for="selectError"><span class="mandatoryStar">*&nbsp;</span>Country:
 										</label>
 										<div class="controls">
-											<select class="input-xlarge focused" id="selectError" name="country" data-parsley-min="1" >
+											<select class="span11 m-wrap" id="selectError" name="country" data-parsley-min="1" >
 											
 												<option>Select</option>
 												<c:forEach items="${countryList}" var="list">
@@ -149,11 +149,11 @@
 									</div>
 
 									<div class="control-group">
-										<label class="control-label" for="selectError">Company
+										<label class="control-label" for="selectError"><span class="mandatoryStar">*&nbsp;</span>Company
 											Size: </label>
 										<div class="controls">
-											<select class="input-xlarge focused" id="selectError" name="companySize" data-parsley-min="1">
-												<option>Select</option>
+											<select class="span11 m-wrap" id="selectError" name="companySize" data-parsley-pattern="^(?!0).*$" data-parsley-pattern-message="This value is required.">
+												<option value="0">Select</option>
 												<c:forEach items="${companySizeList}" var="list">
 													<option value="${list.uuid}">${list.companySize}</option>
 												</c:forEach>

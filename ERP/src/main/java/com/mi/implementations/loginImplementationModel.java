@@ -189,7 +189,7 @@ public class loginImplementationModel {
 	 */
 
 	public static void prepareLogin(HttpServletRequest request,
-			String loggedUser, String loggedUserType, String loggedUserUiid) {
+			String loggedUser, String loggedUserTypeUuid, String loggedUserUiid) {
 
 		Session session = HibernateUtil.openSession();
 		Transaction tr = session.beginTransaction();
@@ -227,14 +227,14 @@ public class loginImplementationModel {
 		newLoginManager.setUserUuid(loggedUserUiid);
 		newLoginManager.setLoginTime(Utility.getUTCInMillisecond());
 		UserTypeMaster userTypeMaster = new UserTypeMaster();
-		userTypeMaster.setUuid(loggedUserType);
+		userTypeMaster.setUuid(loggedUserTypeUuid);
 		newLoginManager.setUserTypeMaster(userTypeMaster);
 
 		// binding the username, userType and loginManager id value to
 		// the session
 		// object
 		request.getSession().setAttribute("loggedUser", loggedUser);
-		request.getSession().setAttribute("loggedUserType", loggedUserType);
+		request.getSession().setAttribute("loggedUserTypeUuid", loggedUserTypeUuid);
 
 		// finally saving it and commiting and also binding the uuid to session
 		// object so that further logout time can be added to the same row
