@@ -1,6 +1,6 @@
 package com.mi.model;
 
-// Generated 4 Sep, 2017 7:21:32 PM by Hibernate Tools 4.3.1
+// Generated 6 Sep, 2017 12:47:17 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name = "country_master", catalog = "ERP")
 public class CountryMaster implements java.io.Serializable {
 
-	private int id;
+	private String uuid;
 	private String iso;
 	private String name;
 	private String nicename;
@@ -30,19 +30,19 @@ public class CountryMaster implements java.io.Serializable {
 	public CountryMaster() {
 	}
 
-	public CountryMaster(int id, String iso, String name, String nicename,
+	public CountryMaster(String uuid, String iso, String name, String nicename,
 			int phonecode) {
-		this.id = id;
+		this.uuid = uuid;
 		this.iso = iso;
 		this.name = name;
 		this.nicename = nicename;
 		this.phonecode = phonecode;
 	}
 
-	public CountryMaster(int id, String iso, String name, String nicename,
+	public CountryMaster(String uuid, String iso, String name, String nicename,
 			String iso3, Short numcode, int phonecode,
 			Set<CompanyMaster> companyMasters) {
-		this.id = id;
+		this.uuid = uuid;
 		this.iso = iso;
 		this.name = name;
 		this.nicename = nicename;
@@ -53,13 +53,13 @@ public class CountryMaster implements java.io.Serializable {
 	}
 
 	@Id
-	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
-		return this.id;
+	@Column(name = "uuid", unique = true, nullable = false, length = 36)
+	public String getUuid() {
+		return this.uuid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 
 	@Column(name = "iso", nullable = false, length = 2)

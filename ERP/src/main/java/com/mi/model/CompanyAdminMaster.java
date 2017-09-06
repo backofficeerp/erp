@@ -1,8 +1,7 @@
 package com.mi.model;
 
-// Generated 4 Sep, 2017 7:21:32 PM by Hibernate Tools 4.3.1
+// Generated 6 Sep, 2017 12:47:17 PM by Hibernate Tools 4.3.1
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -22,64 +19,61 @@ import javax.persistence.UniqueConstraint;
 		"mobile_no", "email" }))
 public class CompanyAdminMaster implements java.io.Serializable {
 
-	private int id;
+	private String uuid;
 	private CompanyMaster companyMaster;
 	private String firstName;
 	private String middleName;
 	private String lastName;
 	private String mobileNo;
 	private String email;
-	private String username;
 	private String password;
-	private Date addDate;
+	private long addDate;
 	private String status;
 
 	public CompanyAdminMaster() {
 	}
 
-	public CompanyAdminMaster(int id, CompanyMaster companyMaster,
-			String firstName, String mobileNo, String email, String username, String password,
-			Date addDate, String status) {
-		this.id = id;
+	public CompanyAdminMaster(String uuid, CompanyMaster companyMaster,
+			String firstName, String mobileNo, String email, String password,
+			long addDate, String status) {
+		this.uuid = uuid;
 		this.companyMaster = companyMaster;
 		this.firstName = firstName;
 		this.mobileNo = mobileNo;
 		this.email = email;
-		this.username = username;
 		this.password = password;
 		this.addDate = addDate;
 		this.status = status;
 	}
 
-	public CompanyAdminMaster(int id, CompanyMaster companyMaster,
+	public CompanyAdminMaster(String uuid, CompanyMaster companyMaster,
 			String firstName, String middleName, String lastName,
-			String mobileNo, String email,String username, String password, Date addDate,
+			String mobileNo, String email, String password, long addDate,
 			String status) {
-		this.id = id;
+		this.uuid = uuid;
 		this.companyMaster = companyMaster;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.mobileNo = mobileNo;
 		this.email = email;
-		this.username = username;
 		this.password = password;
 		this.addDate = addDate;
 		this.status = status;
 	}
 
 	@Id
-	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
-		return this.id;
+	@Column(name = "uuid", unique = true, nullable = false, length = 36)
+	public String getUuid() {
+		return this.uuid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "company_id", nullable = false)
+	@JoinColumn(name = "company_uuid", nullable = false)
 	public CompanyMaster getCompanyMaster() {
 		return this.companyMaster;
 	}
@@ -133,16 +127,6 @@ public class CompanyAdminMaster implements java.io.Serializable {
 		this.email = email;
 	}
 
-	
-	@Column(name = "username", nullable = false, length = 50)
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	@Column(name = "password", nullable = false, length = 30)
 	public String getPassword() {
 		return this.password;
@@ -152,13 +136,12 @@ public class CompanyAdminMaster implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "add_date", nullable = false, length = 10)
-	public Date getAddDate() {
+	@Column(name = "add_date", nullable = false)
+	public long getAddDate() {
 		return this.addDate;
 	}
 
-	public void setAddDate(Date addDate) {
+	public void setAddDate(long addDate) {
 		this.addDate = addDate;
 	}
 

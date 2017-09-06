@@ -6,6 +6,7 @@
     <session-factory name="ERP">
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.isolation">2</property>
         <property name="hibernate.connection.password">123456</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ERP</property>
         <property name="hibernate.connection.username">root</property>

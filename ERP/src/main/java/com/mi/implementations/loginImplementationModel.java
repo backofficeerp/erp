@@ -60,7 +60,7 @@ public class loginImplementationModel {
 		Criteria cr = session.createCriteria(SuperAdminMaster.class);
 
 		// puting restriction via username so that we get an unique object
-		Criterion crn = Restrictions.eq("username", uname);
+		Criterion crn = Restrictions.eq("email", uname);
 		cr.add(crn);
 		SuperAdminMaster superAdmin = (SuperAdminMaster) cr.uniqueResult();
 
@@ -77,7 +77,9 @@ public class loginImplementationModel {
 				// as everything is setup now, same user and his/her details
 				// will be binded to the session object and along with various
 				// details on the login_manager table
-				prepareLogin(request, uname, 1, superAdmin.getId());
+				prepareLogin(request, uname,
+						"7b824b91-92c6-11e7-a05d-b8975ad405b5",
+						superAdmin.getUuid());
 			}
 		}
 
@@ -108,7 +110,7 @@ public class loginImplementationModel {
 		Criteria cr = session.createCriteria(CompanyAdminMaster.class);
 
 		// puting restriction via username so that we get an unique object
-		Criterion crn = Restrictions.eq("username", uname);
+		Criterion crn = Restrictions.eq("email", uname);
 		cr.add(crn);
 		CompanyAdminMaster companyAdmin = (CompanyAdminMaster) cr
 				.uniqueResult();
@@ -126,7 +128,9 @@ public class loginImplementationModel {
 				// as everything is setup now, same user and his/her details
 				// will be binded to the session object and along with various
 				// details on the login_manager table
-				prepareLogin(request, uname, 2, companyAdmin.getId());
+				prepareLogin(request, uname,
+						"8d0f2733-92c8-11e7-a05d-b8975ad405b5",
+						companyAdmin.getUuid());
 
 			}
 		}
@@ -145,89 +149,85 @@ public class loginImplementationModel {
 
 	}
 
-	/*public static void prepareLogin(HttpServletRequest request,
-			String loggedUser, int loggedUserType, int loggedUserId) {
+	/*
+	 * public static void prepareLogin(HttpServletRequest request, String
+	 * loggedUser, int loggedUserType, int loggedUserId) {
+	 * 
+	 * Session session = HibernateUtil.openSession(); Transaction tr =
+	 * session.beginTransaction();
+	 * 
+	 * // fetching the max id from login manager table to update the login and
+	 * // logout or various details int loginManagerMaxIdInt = 0; Criteria c2 =
+	 * session.createCriteria(LoginManager.class);
+	 * c2.addOrder(Order.desc("id")); c2.setMaxResults(1); LoginManager
+	 * loginManager = (LoginManager) c2.uniqueResult(); if (loginManager !=
+	 * null) { loginManagerMaxIdInt = loginManager.getId(); }
+	 * loginManagerMaxIdInt++;
+	 * 
+	 * System.out.println("logManId: " + loginManagerMaxIdInt);
+	 * 
+	 * // preparing the new loginManager object to be stored in the DB
+	 * LoginManager newLoginManager = new LoginManager();
+	 * newLoginManager.setId(loginManagerMaxIdInt);
+	 * newLoginManager.setUserId(loggedUserId); newLoginManager.setLoginTime(new
+	 * Date(System.currentTimeMillis())); UserTypeMaster userTypeMaster = new
+	 * UserTypeMaster(); userTypeMaster.setId(loggedUserType);
+	 * newLoginManager.setUserTypeMaster(userTypeMaster);
+	 * 
+	 * // binding the username, userType and loginManager id value to // the
+	 * session // object request.getSession().setAttribute("loggedUser",
+	 * loggedUser); request.getSession().setAttribute("loggedUserType",
+	 * loggedUserType);
+	 * request.getSession().setAttribute("loggedLoginManagerId",
+	 * loginManagerMaxIdInt);
+	 * 
+	 * // finally saving it and commiting session.save(newLoginManager);
+	 * 
+	 * tr.commit(); session.close();
+	 * 
+	 * }
+	 */
 
-		Session session = HibernateUtil.openSession();
-		Transaction tr = session.beginTransaction();
-
-		// fetching the max id from login manager table to update the login and
-		// logout or various details
-		int loginManagerMaxIdInt = 0;
-		Criteria c2 = session.createCriteria(LoginManager.class);
-		c2.addOrder(Order.desc("id"));
-		c2.setMaxResults(1);
-		LoginManager loginManager = (LoginManager) c2.uniqueResult();
-		if (loginManager != null) {
-			loginManagerMaxIdInt = loginManager.getId();
-		}
-		loginManagerMaxIdInt++;
-		
-		System.out.println("logManId: " + loginManagerMaxIdInt);
-
-		// preparing the new loginManager object to be stored in the DB
-		LoginManager newLoginManager = new LoginManager();
-		newLoginManager.setId(loginManagerMaxIdInt);
-		newLoginManager.setUserId(loggedUserId);
-		newLoginManager.setLoginTime(new Date(System.currentTimeMillis()));
-		UserTypeMaster userTypeMaster = new UserTypeMaster();
-		userTypeMaster.setId(loggedUserType);
-		newLoginManager.setUserTypeMaster(userTypeMaster);
-
-		// binding the username, userType and loginManager id value to
-		// the session
-		// object
-		request.getSession().setAttribute("loggedUser", loggedUser);
-		request.getSession().setAttribute("loggedUserType", loggedUserType);
-		request.getSession().setAttribute("loggedLoginManagerId",
-				loginManagerMaxIdInt);
-
-		// finally saving it and commiting
-		session.save(newLoginManager);
-
-		tr.commit();
-		session.close();
-
-	}*/
-	
 	public static void prepareLogin(HttpServletRequest request,
-			String loggedUser, int loggedUserType, int loggedUserId) {
+			String loggedUser, String loggedUserType, String loggedUserUiid) {
 
-	
 		Session session = HibernateUtil.openSession();
 		Transaction tr = session.beginTransaction();
 		// fetching the max id from login manager table to update the login and
 		// logout or various details
-		int loginManagerMaxIdInt = 0;
-		Criteria c2 = session.createCriteria(LoginManager.class);
-		c2.addOrder(Order.desc("id"));
-		c2.setMaxResults(1);
-		LoginManager loginManager = (LoginManager) c2.uniqueResult();
-		if (loginManager != null) {
-			System.out.println("yes i am here also");
-			loginManagerMaxIdInt = loginManager.getId();
-		}
-		
-		/*DetachedCriteria maxId = DetachedCriteria.forClass(LoginManager.class)
-			    .setProjection( Projections.max("id") );
-		Criteria c2 = session.createCriteria(LoginManager.class)
-			    .add( Property.forName("id").eq(maxId));*/
-		
-		/*LoginManager loginManager = (LoginManager) c2.uniqueResult();
-		if (loginManager != null) {
-			loginManagerMaxIdInt = loginManager.getId();
-		}*/
-		loginManagerMaxIdInt++;
-		
-		System.out.println("logManId: " + loginManagerMaxIdInt);
+
+		/*
+		 * int loginManagerMaxIdInt = 0; Criteria c2 =
+		 * session.createCriteria(LoginManager.class);
+		 * c2.addOrder(Order.desc("id")); c2.setMaxResults(1); LoginManager
+		 * loginManager = (LoginManager) c2.uniqueResult(); if (loginManager !=
+		 * null) { loginManagerMaxIdInt = loginManager.getId(); }
+		 */
+
+		/*
+		 * DetachedCriteria maxId =
+		 * DetachedCriteria.forClass(LoginManager.class) .setProjection(
+		 * Projections.max("id") ); Criteria c2 =
+		 * session.createCriteria(LoginManager.class) .add(
+		 * Property.forName("id").eq(maxId));
+		 */
+
+		/*
+		 * LoginManager loginManager = (LoginManager) c2.uniqueResult(); if
+		 * (loginManager != null) { loginManagerMaxIdInt = loginManager.getId();
+		 * }
+		 */
+		// loginManagerMaxIdInt++;
+
+		// System.out.println("logManId: " + loginManagerMaxIdInt);
 
 		// preparing the new loginManager object to be stored in the DB
 		LoginManager newLoginManager = new LoginManager();
-		newLoginManager.setId(loginManagerMaxIdInt);
-		newLoginManager.setUserId(loggedUserId);
-		newLoginManager.setLoginTime(new Date(System.currentTimeMillis()));
+		// newLoginManager.setId(loginManagerMaxIdInt);
+		newLoginManager.setUserUuid(loggedUserUiid);
+		newLoginManager.setLoginTime(Utility.getUTCInMillisecond());
 		UserTypeMaster userTypeMaster = new UserTypeMaster();
-		userTypeMaster.setId(loggedUserType);
+		userTypeMaster.setUuid(loggedUserType);
 		newLoginManager.setUserTypeMaster(userTypeMaster);
 
 		// binding the username, userType and loginManager id value to
@@ -235,15 +235,13 @@ public class loginImplementationModel {
 		// object
 		request.getSession().setAttribute("loggedUser", loggedUser);
 		request.getSession().setAttribute("loggedUserType", loggedUserType);
-		request.getSession().setAttribute("loggedLoginManagerId",
-				loginManagerMaxIdInt);
 
-		// finally saving it and commiting
-		session.save(newLoginManager);
-		
-		
+		// finally saving it and commiting and also binding the uuid to session
+		// object so that further logout time can be added to the same row
+		request.getSession().setAttribute("loggedLoginManagerUuid",
+				session.save(newLoginManager));
 		tr.commit();
-		
+
 		session.close();
 
 	}

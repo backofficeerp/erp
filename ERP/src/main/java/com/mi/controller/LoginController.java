@@ -42,10 +42,10 @@ public class LoginController {
 			// if not null then redirecting the loggedUser based on his/her
 			// usertype
 			switch (Utility.getLoggedUserType(request)) {
-			case 1:
+			case "7b824b91-92c6-11e7-a05d-b8975ad405b5":
 				return "crustAdministration";
 
-			case 2:
+			case "8d0f2733-92c8-11e7-a05d-b8975ad405b5":
 				return "companyManagementDashboard";
 
 			default:
@@ -108,7 +108,7 @@ public class LoginController {
 		// string 1 tells that user is of type superadmin therfore same
 		// validation has been perform
 
-		case "1":
+		case "7b824b91-92c6-11e7-a05d-b8975ad405b5":
 
 			// this nested switch case is get the various validationStatus
 			// number i.e. 1, 2, 3 which have their own meaning
@@ -136,7 +136,7 @@ public class LoginController {
 
 			break;
 
-		case "2":
+		case "8d0f2733-92c8-11e7-a05d-b8975ad405b5":
 
 			switch (loginImplementationModel.isCompanyAdminValid(request)) {
 			case 0:
@@ -154,7 +154,7 @@ public class LoginController {
 			}
 			break;
 
-		case "3":
+		case "8d0f2e25-92c8-11e7-a05d-b8975ad405b5":
 			json = "{\"url\" : \"failed\", \"validationMessage\" : \"Branch not prepared yet. Please try again later\"}";
 			response.getWriter().write(json);
 			break;
@@ -176,7 +176,7 @@ public class LoginController {
 		//fetching the loginManager row from login_manager table for current logged User 
 		LoginManager loginManager = (LoginManager) session.get(
 				LoginManager.class,
-				Utility.getLoggedLoginManagerId(request));
+				Utility.getLoggedLoginManagerUuid(request));
 
 		//Criteria cr = session.createCriteria(LoginManager.class);
 		//Criterion crn = Restrictions.eq("id", 5);
@@ -184,7 +184,7 @@ public class LoginController {
 		//LoginManager loginManager = (LoginManager)cr.uniqueResult();
 		
 		//changing the logut time to current time in the fetched object
-		loginManager.setLogoutTime(new Date(System.currentTimeMillis()));
+		loginManager.setLogoutTime(Utility.getUTCInMillisecond());
 		
 		//updating the same object to the db
 		session.update(loginManager);

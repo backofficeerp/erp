@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -98,24 +101,35 @@ public class Utility {
 
 	}
 
-	//to get the loggedUser username from session object
+	// to get the loggedUser username from session object
 	public static String getLoggedUser(HttpServletRequest request) {
 
 		return (String) request.getSession().getAttribute("loggedUser");
 
 	}
 
-	//to get the loggedUser usertype from session object
-	public static int getLoggedUserType(HttpServletRequest request) {
+	// to get the loggedUser usertype from session object
+	public static String getLoggedUserType(HttpServletRequest request) {
 
-		return (Integer) request.getSession().getAttribute("loggedUserType");
+		return (String) request.getSession().getAttribute("loggedUserType");
 
 	}
-	
-	//to get loggedUser login Manager Id
-	public static int getLoggedLoginManagerId(HttpServletRequest request) {
 
-		return (Integer) request.getSession().getAttribute("loggedLoginManagerId");
+	// to get loggedUser login Manager Id
+	public static String getLoggedLoginManagerUuid(HttpServletRequest request) {
+
+		return (String) request.getSession().getAttribute(
+				"loggedLoginManagerUuid");
+
+	}
+
+	public static long getUTCInMillisecond() {
+		
+		Calendar calendar = new GregorianCalendar();
+		TimeZone timeZoneUTC = TimeZone.getTimeZone("UTC");
+		calendar.setTimeZone(timeZoneUTC);
+		
+		return calendar.getTimeInMillis();
 
 	}
 

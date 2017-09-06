@@ -69,7 +69,7 @@
 				<div class="block">
 					<div class="navbar navbar-inner block-header">
 						<div class="muted pull-left">Manage Companies</div>
-						<div class="pull-right"><a href="packageUpgrade"><span class="badge badge-warning">Create a New Company&nbsp; &nbsp;<span
+						<div class="pull-right"><a href="createCompany"><span class="badge badge-warning">Create a New Company&nbsp; &nbsp;<span
 										class="icon-plus icon-white"></span></span></a>
 
                                 </div>

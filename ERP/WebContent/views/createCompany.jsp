@@ -99,7 +99,7 @@
 											<select class="input-xlarge focused" id="selectError" name="companyType" data-parsley-min="1">
 												<option>Select</option>
 												<c:forEach items="${companyTypeList}" var="list">
-													<option value="${list.id}">${list.companyType}</option>
+													<option value="${list.uuid}">${list.companyType}</option>
 												</c:forEach>
 
 											</select>
@@ -124,15 +124,6 @@
 									</div>
 
 									<div class="control-group">
-										<label class="control-label " for="focusedInput">Username:
-										</label>
-										<div class="controls">
-											<input class="input-xlarge focused" id="focusedInput"
-												type="text" name="uname" required>
-										</div>
-									</div>
-
-									<div class="control-group">
 										<label class="control-label " for="focusedInput">Password:
 										</label>
 										<div class="controls">
@@ -150,7 +141,7 @@
 											
 												<option>Select</option>
 												<c:forEach items="${countryList}" var="list">
-													<option value="${list.id}">${list.name}</option>
+													<option value="${list.uuid}">${list.name}</option>
 												</c:forEach>
 												
 											</select>
@@ -164,7 +155,7 @@
 											<select class="input-xlarge focused" id="selectError" name="companySize" data-parsley-min="1">
 												<option>Select</option>
 												<c:forEach items="${companySizeList}" var="list">
-													<option value="${list.id}">${list.companySize}</option>
+													<option value="${list.uuid}">${list.companySize}</option>
 												</c:forEach>
 											</select>
 										</div>

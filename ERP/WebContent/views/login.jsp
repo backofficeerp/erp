@@ -50,7 +50,7 @@
 								<select class="typeSelect" id="userType" name="usertype">
 									<option value="0">User Type</option>
 									<c:forEach items="${userTypeSet}" var="list">
-										<option value="${list.id}">${list.userType}</option>
+										<option value="${list.uuid}">${list.userType}</option>
 									</c:forEach>
 								</select> <img src="img/user_checked.png" class="icon">
 							</div>
