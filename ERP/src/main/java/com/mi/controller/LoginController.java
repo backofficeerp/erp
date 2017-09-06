@@ -8,8 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.internal.CriteriaImpl.CriterionEntry;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,6 +58,17 @@ public class LoginController {
 					loginImplementationModel.getAlluserType());
 			return "login";
 		}
+
+	}
+	
+	@RequestMapping(value = "login2" , method = RequestMethod.GET)
+	public String login2(Model model, HttpServletRequest request) {
+		System.out.println("in login controller 2");
+
+			
+			model.addAttribute("userTypeSet",
+					loginImplementationModel.getAlluserType());
+			return "login";
 
 	}
 
@@ -163,18 +178,23 @@ public class LoginController {
 				LoginManager.class,
 				Utility.getLoggedLoginManagerId(request));
 
+		//Criteria cr = session.createCriteria(LoginManager.class);
+		//Criterion crn = Restrictions.eq("id", 5);
+		//cr.add(crn);
+		//LoginManager loginManager = (LoginManager)cr.uniqueResult();
+		
 		//changing the logut time to current time in the fetched object
 		loginManager.setLogoutTime(new Date(System.currentTimeMillis()));
 		
 		//updating the same object to the db
 		session.update(loginManager);
-		tr.commit();
 		
+		tr.commit();
 		//invalidating the sessin object 
 		request.getSession().invalidate();
-
+		
 		//finally closing the session
-		HibernateUtil.closeSession();
+		session.close();
 		return new ModelAndView("redirect:" + "login");
 	}
 

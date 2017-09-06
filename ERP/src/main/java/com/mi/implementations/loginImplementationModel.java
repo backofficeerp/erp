@@ -9,6 +9,8 @@ import javax.transaction.TransactionManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.StatelessSession;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.DetachedCriteria;
@@ -191,30 +193,30 @@ public class loginImplementationModel {
 	public static void prepareLogin(HttpServletRequest request,
 			String loggedUser, int loggedUserType, int loggedUserId) {
 
-		
+	
 		Session session = HibernateUtil.openSession();
 		Transaction tr = session.beginTransaction();
-
 		// fetching the max id from login manager table to update the login and
 		// logout or various details
 		int loginManagerMaxIdInt = 0;
-		/*Criteria c2 = session.createCriteria(LoginManager.class);
+		Criteria c2 = session.createCriteria(LoginManager.class);
 		c2.addOrder(Order.desc("id"));
 		c2.setMaxResults(1);
 		LoginManager loginManager = (LoginManager) c2.uniqueResult();
 		if (loginManager != null) {
-			loginManagerMaxIdInt = loginManager.getId();
-		}*/
-		
-		DetachedCriteria maxId = DetachedCriteria.forClass(LoginManager.class)
-			    .setProjection( Projections.max("id") );
-		Criteria c2 = session.createCriteria(LoginManager.class)
-			    .add( Property.forName("id").eq(maxId));
-		
-		LoginManager loginManager = (LoginManager) c2.uniqueResult();
-		if (loginManager != null) {
+			System.out.println("yes i am here also");
 			loginManagerMaxIdInt = loginManager.getId();
 		}
+		
+		/*DetachedCriteria maxId = DetachedCriteria.forClass(LoginManager.class)
+			    .setProjection( Projections.max("id") );
+		Criteria c2 = session.createCriteria(LoginManager.class)
+			    .add( Property.forName("id").eq(maxId));*/
+		
+		/*LoginManager loginManager = (LoginManager) c2.uniqueResult();
+		if (loginManager != null) {
+			loginManagerMaxIdInt = loginManager.getId();
+		}*/
 		loginManagerMaxIdInt++;
 		
 		System.out.println("logManId: " + loginManagerMaxIdInt);
@@ -238,7 +240,8 @@ public class loginImplementationModel {
 
 		// finally saving it and commiting
 		session.save(newLoginManager);
-
+		
+		
 		tr.commit();
 		
 		session.close();
