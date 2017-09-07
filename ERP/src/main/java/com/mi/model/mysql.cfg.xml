@@ -6,21 +6,12 @@
     <session-factory name="ERP">
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">123456</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ERP</property>
+        <property name="hibernate.connection.url">jdbc:mysql://192.168.1.30:3306/crust_erp</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.connection.isolation">2</property>
-        <!-- <mapping resource="com/mi/model/User.hbm.xml"/>
-        <mapping resource="com/mi/model/Role.hbm.xml"/>
-        <mapping resource="com/mi/model/Branch.hbm.xml"/>
-        <mapping resource="com/mi/model/Company.hbm.xml"/>
-        <mapping resource="com/mi/model/Organisation.hbm.xml"/>
-        <mapping resource="com/mi/model/LoginManager.hbm.xml"/>
-        <mapping resource="com/mi/model/Modules.hbm.xml"/>
-        <mapping resource="com/mi/model/RoleModuleRelation.hbm.xml"/>
-        <mapping resource="com/mi/model/UserRoleRelation.hbm.xml"/> -->
         <mapping class="com.mi.model.CompanyAdminMaster" />
         <mapping class="com.mi.model.CompanyTypeMaster" />
         <mapping class="com.mi.model.SuperAdminMaster" />
@@ -29,5 +20,8 @@
         <mapping class="com.mi.model.CompanySizeMaster" />
         <mapping class="com.mi.model.CountryMaster" />
         <mapping class="com.mi.model.LoginManager" />
+        <mapping class="com.mi.model.BranchMaster" />
+        <mapping class="com.mi.model.DesignationMaster" />
+        <mapping class="com.mi.model.DepartmentMaster" />
     </session-factory>
 </hibernate-configuration>

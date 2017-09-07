@@ -7,6 +7,9 @@ font-weight: bold;
 .td12{
 font-size: 12px;
 }
+.td14{
+font-size: 14px;
+}
 
 .parsley-required{
 	color: #E74C3C !important;
@@ -19,3 +22,24 @@ font-size: 12px;
 .parsley-min{
 	color: #E74C3C !important;
 }
+
+.centerButton{
+padding-top:30px !important;	
+padding-left: 400px !important;	
+}
+
+.paddingTop{
+padding-top:50px !important;
+
+}
+
+.paddingLeft{
+padding-left:330px !important;
+
+}
+
+.centerBack{
+    background-color: rgba(245, 245, 245, 0);
+	
+}
+    

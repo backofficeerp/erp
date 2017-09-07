@@ -8,19 +8,14 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.isolation">2</property>
         <property name="hibernate.connection.password">123456</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ERP</property>
+        <property name="hibernate.connection.url">jdbc:mysql://192.168.1.30:3306/crust_erp</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
-        <mapping class="com.mi.model.CompanyAdminMaster" />
-        <mapping class="com.mi.model.CompanyTypeMaster" />
-        <mapping class="com.mi.model.SuperAdminMaster" />
-        <mapping class="com.mi.model.CompanyMaster" />
-        <mapping class="com.mi.model.UserTypeMaster" />
-        <mapping class="com.mi.model.CompanySizeMaster" />
-        <mapping class="com.mi.model.CountryMaster" />
-        <mapping class="com.mi.model.LoginManager" />
+        <mapping class="com.mi.model.BranchMaster" />
+        <mapping class="com.mi.model.DesignationMaster" />
+        <mapping class="com.mi.model.DepartmentMaster" />
     </session-factory>
 </hibernate-configuration>

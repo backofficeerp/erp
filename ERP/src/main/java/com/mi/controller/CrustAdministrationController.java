@@ -29,4 +29,20 @@ public class CrustAdministrationController {
 		return "companyListing";
 	}
 	
+	@RequestMapping(value = "createDesignation", method = RequestMethod.GET)
+	public String createDesignation(Model model, HttpServletRequest request){
+		
+		model.addAttribute("uri", "createDesignation");
+		
+		return "createDesignation";
+	}
+	
+	@RequestMapping(value = "createDepartment", method = RequestMethod.GET)
+	public String createDepartment(Model model, HttpServletRequest request){
+		
+		model.addAttribute("uri", "createDepartment");
+		
+		return "createDepartment";
+	}
+	
 }
