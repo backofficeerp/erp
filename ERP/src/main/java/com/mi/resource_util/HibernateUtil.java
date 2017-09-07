@@ -13,7 +13,7 @@ public class HibernateUtil {
 	private static StatelessSession stateLessSession;
 	
 	static{
-		sessionFactory = new Configuration().configure("com/mi/model/mysqlWEB.cfg.xml").buildSessionFactory();
+		sessionFactory = new Configuration().configure("com/mi/model/mysql.cfg.xml").buildSessionFactory();
 	}
 	
 	public static Session openSession(){
