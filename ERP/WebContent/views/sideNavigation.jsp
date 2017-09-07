@@ -13,6 +13,10 @@
 				Dashboard</a></li>
 				<li ${uri == 'companyListing' ? 'class="active"' : '' }><a href="companyListing"><i class="icon-chevron-right"></i>
 				Manage Companies</a></li>
+				<li ${uri == 'createDesignation' ? 'class="active"' : '' }><a href="createDesignation"><i class="icon-chevron-right"></i>
+				Manage Designation</a></li>
+				<li ${uri == 'createDepartment' ? 'class="active"' : '' }><a href="createDepartment"><i class="icon-chevron-right"></i>
+				Manage Department</a></li>
 		
 		
 		

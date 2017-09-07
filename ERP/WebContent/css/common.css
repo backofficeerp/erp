@@ -31,3 +31,23 @@ font-size: 12px;
 .mandatoryStar{
 	color: red;
 }
+
+.centerButton{
+padding-top:30px !important;	
+padding-left: 400px !important;	
+}
+
+.paddingTop{
+padding-top:50px !important;
+
+}
+
+.paddingLeft{
+padding-left:330px !important;
+
+}
+
+.centerBack{
+    background-color: rgba(245, 245, 245, 0);
+	
+}
